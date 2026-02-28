@@ -99,7 +99,7 @@ exports.placeOrder = async (req, res) => {
 ===================== */
 exports.getAllOrders = async (req, res) => {
   const result = await ordersCollection
-    .find()
+    .find({ paymentStatus: "paid" })
     .sort({ createdAt: -1 })
     .toArray();
 
@@ -112,7 +112,7 @@ exports.getAllOrders = async (req, res) => {
 exports.getCustomerOrders = async (req, res) => {
   try {
     const orders = await ordersCollection
-      .find({ userEmail: req.params.email })
+      .find({ userEmail: req.params.email, paymentStatus: "paid" })
       .toArray();
 
     res.send(orders);

@@ -15,7 +15,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173",
-      "https://server.fastforwardlogistics.org",
+      "http://localhost:5000",
       "https://fastforwardlogistics.org",
     ],
     credentials: true,
@@ -23,6 +23,7 @@ app.use(
 );
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 /* =====================
@@ -35,6 +36,7 @@ app.use(require("./routes/product.routes"));
 app.use(require("./routes/cart.routes"));
 app.use(require("./routes/wishlist.routes"));
 app.use(require("./routes/order.routes"));
+app.use(require("./routes/payment.routes"));
 
 /* =====================
    ROOT
