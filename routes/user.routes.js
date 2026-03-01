@@ -1,9 +1,11 @@
 const router = require("express").Router();
+const verifyToken = require("../middlewares/verifyToken");
 const {
   saveUser,
   getUserRole,
   getAllUsers, 
    checkUserEmail, 
+  updateUserBlockStatus,
 } = require("../controllers/user.controller");
 
 /* =====================
@@ -17,6 +19,9 @@ router.get("/users", getAllUsers);
 router.post("/users/:email", saveUser);
 
 // Get user role (admin / customer)
-router.get("/users/role/:email", getUserRole);
+router.get("/users/role/:email", verifyToken, getUserRole);
+
+// Block/unblock user (admin)
+router.patch("/users/:id/block", verifyToken, updateUserBlockStatus);
 
 module.exports = router;

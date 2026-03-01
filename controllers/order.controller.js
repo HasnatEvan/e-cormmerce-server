@@ -59,6 +59,7 @@ exports.placeOrder = async (req, res) => {
     // ✅ STEP 2: Save order
     const orderResult = await ordersCollection.insertOne({
       ...order,
+      status: "pending",
       orderTime: new Date(),
       orderTimestamp: Date.now(),
     });

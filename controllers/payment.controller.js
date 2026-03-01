@@ -274,7 +274,7 @@ exports.handleSuccess = async (req, res) => {
       {
         $set: {
           paymentStatus: "paid",
-          status: "processing",
+          status: "pending",
           paymentInfo: {
             val_id: val_id || null,
             status: status || "VALID",
