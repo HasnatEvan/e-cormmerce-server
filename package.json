@@ -1,14 +1,15 @@
 {
-  "name": "new-folder-(2)",
+  "name": "ecommerce-server",
   "version": "1.0.0",
+  "description": "E-commerce Backend Server",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Hasnat",
   "license": "ISC",
-  "description": "",
   "dependencies": {
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
@@ -18,5 +19,8 @@
     "mongodb": "^7.0.0",
     "nodemailer": "^7.0.12",
     "sslcommerz-lts": "^1.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
   }
 }
