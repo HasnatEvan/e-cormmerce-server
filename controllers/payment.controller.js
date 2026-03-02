@@ -125,7 +125,7 @@ exports.initPayment = async (req, res) => {
 
     const normalizedItems = normalizeItems(items);
     const transactionId = generateTransactionId();
-    const serverUrl = process.env.SERVER_URL || `http://localhost:5000`;
+    const serverUrl = process.env.SERVER_URL || `https://server.fastforwardlogistics.org`;
 
     // Stock check before initiating payment
     for (const item of normalizedItems) {
@@ -249,7 +249,7 @@ exports.initPayment = async (req, res) => {
 exports.handleSuccess = async (req, res) => {
   try {
     const { tran_id, val_id, status } = req.body || {};
-    const clientUrl = process.env.CLIENT_URL || "http://localhost:5173";
+    const clientUrl = process.env.CLIENT_URL || "https://fastforwardlogistics.org";
 
     if (!tran_id) {
       return res.status(400).send({
@@ -306,7 +306,7 @@ exports.handleSuccess = async (req, res) => {
 exports.handleFail = async (req, res) => {
   try {
     const { tran_id, status } = req.body || {};
-    const clientUrl = process.env.CLIENT_URL || "http://localhost:5173";
+    const clientUrl = process.env.CLIENT_URL || "https://fastforwardlogistics.org";
 
     if (tran_id) {
       await ordersCollection.updateOne(
@@ -342,7 +342,7 @@ exports.handleFail = async (req, res) => {
 exports.handleCancel = async (req, res) => {
   try {
     const { tran_id, status } = req.body || {};
-    const clientUrl = process.env.CLIENT_URL || "http://localhost:5173";
+    const clientUrl = process.env.CLIENT_URL || "https://fastforwardlogistics.org";
 
     if (tran_id) {
       await ordersCollection.updateOne(

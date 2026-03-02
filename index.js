@@ -14,9 +14,9 @@ const port = process.env.PORT || 5000;
 app.use(
   cors({
     origin: [
-      "http://localhost:5173",
-      "http://localhost:5000",
       "https://fastforwardlogistics.org",
+      "https://fastforwardlogistics.org",
+      "https://server.fastforwardlogistics.org",
     ],
     credentials: true,
   })
@@ -50,7 +50,7 @@ app.get("/", (req, res) => {
 ===================== */
 async function startServer() {
   try {
-    await client.connect();
+    // await client.connect();
     console.log("✅ MongoDB connected successfully");
 
     app.listen(port, () => {
